@@ -1,0 +1,24 @@
+{
+    "name": "hpolthof/notafabriek-api",
+    "description": "API Wrapper for PHP to notafabriek.nl",
+    "keywords": ["notafabriek.nl", "API", "wrapper", "invoicing"],
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Olthof",
+            "email": "hpolthof@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hpolthof\\NotaFabriekApi\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+
+}
