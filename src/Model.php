@@ -18,6 +18,12 @@ abstract class Model
         $this->client = $client;
     }
 
+    public function find($id)
+    {
+        $this->fill($this->client->show($this->_name, $id));
+        return $this;
+    }
+
     /**
      * @return static[]
      * @throws \ReflectionException
