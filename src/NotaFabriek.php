@@ -51,7 +51,7 @@ class NotaFabriek
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \HttpException
      */
-    protected function request($method, $endpoint, $data = null)
+    public function request($method, $endpoint, $data = null)
     {
         $client = new Client();
 
@@ -185,7 +185,7 @@ class NotaFabriek
         return $this->parseResponse($request);
     }
 
-    protected function parseResponse($request)
+    public function parseResponse($request)
     {
         if ($request->getHeader('Content-type')[0] == 'application/json') {
             $json = json_decode($request->getBody()->getContents(), false);
