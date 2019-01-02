@@ -42,7 +42,7 @@ class Invoice extends Model
 
     public function download()
     {
-        $response = $this->client->request('POST', "{$this->_name}/{$this->id}/send", compact('method'));
+        $response = $this->client->request('POST', "{$this->_name}/{$this->id}/download", compact('method'));
         return $response->getBody()->getContents();
     }
 }
