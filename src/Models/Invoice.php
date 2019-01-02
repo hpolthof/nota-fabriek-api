@@ -31,7 +31,7 @@ class Invoice extends Model
 
     public function send($method = self::SEND_METHOD_EMAIL)
     {
-        $response = $this->client->request('POST', "{$this->id}/send", compact('method'));
+        $response = $this->client->request('POST', "{$this->_name}/{$this->id}/send", compact('method'));
         $result = $this->client->parseResponse($response);
 
         if ($result !== false) {
