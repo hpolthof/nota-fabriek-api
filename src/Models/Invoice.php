@@ -39,4 +39,10 @@ class Invoice extends Model
         }
         return false;
     }
+
+    public function download()
+    {
+        $response = $this->client->request('POST', "{$this->_name}/{$this->id}/send", compact('method'));
+        return $response->getBody()->getContents();
+    }
 }
