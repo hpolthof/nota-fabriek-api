@@ -29,6 +29,22 @@ class Invoice extends Model
         return $this;
     }
 
+    /**
+     * @param float $amount
+     * @param null|string $description
+     * @param null|string $date Format Y-m-d
+     * @return bool
+     * @throws \Exception
+     */
+    public function addPayment($amount, $description = null, $date = null)
+    {
+        $payment = $this->payment();
+        $payment->amount = $amount;
+        $payment->description = $description ?: '';
+        $payment->date = $date ?: date('Y-m-d');
+        return $payment->save();
+    }
+
     public function send($method = self::SEND_METHOD_EMAIL)
     {
         $response = $this->client->request('POST', "{$this->_name}/{$this->id}/send", compact('method'));
@@ -44,5 +60,17 @@ class Invoice extends Model
     {
         $response = $this->client->request('GET', "{$this->_name}/{$this->id}/download", compact('method'));
         return $response->getBody()->getContents();
+    }
+
+    /**
+     * @return InvoicePayment
+     * @throws \Exception
+     */
+    public function payment()
+    {
+        $payment = new InvoicePayment($this->client);
+        $payment->setInvoice($this);
+
+        return $payment;
     }
 }
