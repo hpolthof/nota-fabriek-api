@@ -33,16 +33,16 @@ class Invoice extends Model
     /**
      * @param float $amount
      * @param null|string $description
-     * @param null|string $date Format Y-m-d
+     * @param null|string $paid_at Format Y-m-d
      * @return bool
      * @throws \Exception
      */
-    public function addPayment($amount, $description = null, $date = null)
+    public function addPayment($amount, $description = null, $paid_at = null)
     {
         $payment = $this->payment();
         $payment->amount = $amount;
         $payment->description = $description ?: '';
-        $payment->date = $date ?: date('Y-m-d');
+        $payment->paid_at = $paid_at ?: date('Y-m-d');
         return $payment->save();
     }
 
