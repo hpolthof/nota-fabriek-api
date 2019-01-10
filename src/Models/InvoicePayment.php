@@ -11,7 +11,7 @@ class InvoicePayment extends Model
 
     public $amount;
     public $description;
-    public $date;
+    public $paid_at;
 
     /**
      * @return null|Invoice
