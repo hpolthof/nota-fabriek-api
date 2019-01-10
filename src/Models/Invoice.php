@@ -18,6 +18,7 @@ class Invoice extends Model
     public $customer_id;
     public $invoice_date;
     public $due_date;
+    public $status;
     public $reference;
     public $payment_condition;
     public $items = [];
